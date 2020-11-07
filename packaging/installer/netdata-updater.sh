@@ -256,11 +256,7 @@ done
 # But only we're not a controlling terminal (tty)
 # Randomly sleep between 1s and 60m
 if [ ! -t 1 ] && [ -z "${NETDATA_NOT_RUNNING_FROM_CRON}" ]; then
-  if [ "$(uname -s)" = "FreeBSD" ]; then
-    sleep `jot -r 1 1 3600`
-  else
-    sleep $(((RANDOM % 3600) + 1))s
-  fi
+  sleep $(((RANDOM % 3600) + 1))s
 fi
 
 # Usually stored in /etc/netdata/.environment
